@@ -59,6 +59,10 @@
     margin-bottom: var(--spacing-lg);
 }
 
+.heroTitleLead {
+    white-space: nowrap;
+}
+
 .heroTitleAccent {
     display: block;
     color: var(--color-accent);
@@ -141,10 +145,6 @@
     color: var(--color-white);
     font-weight: 500;
     font-size: 0.95rem;
-}
-
-.trustIcon {
-    font-size: 1.2rem;
 }
 
 .scrollIndicator {
@@ -339,14 +339,23 @@
 .practiceCard {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 200px;
     padding: var(--spacing-xl);
     background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+}
+
+.practiceCard > * {
+    position: relative;
+    z-index: 2;
 }
 
 .practiceCard::before {
@@ -359,6 +368,22 @@
     background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
     transform: scaleX(0);
     transition: transform var(--transition-base);
+    z-index: 3;
+}
+
+.practiceCard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(165deg, rgba(114, 47, 55, 0.72) 15%, rgba(90, 37, 44, 0.86) 75%),
+        var(--practice-card-image);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.98;
+    transform: scale(1);
+    transition: transform var(--transition-base), opacity var(--transition-base);
+    z-index: 1;
 }
 
 .practiceCard:hover {
@@ -370,30 +395,36 @@
     transform: scaleX(1);
 }
 
-.practiceIcon {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
+.practiceCard:hover::after {
+    transform: scale(1.06);
+    opacity: 1;
 }
 
 .practiceCardTitle {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-body);
+    font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-white);
+    margin-bottom: 0;
     text-align: center;
 }
 
 .practiceArrow {
+    position: absolute;
+    left: 50%;
+    bottom: var(--spacing-md);
     color: var(--color-accent);
     font-size: 1.5rem;
+    line-height: 1;
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translate(-50%, 8px);
     transition: all var(--transition-base);
 }
 
 .practiceCard:hover .practiceArrow {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(-50%, 0);
 }
 
 .practiceFooter {

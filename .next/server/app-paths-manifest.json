@@ -1,8 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/about/page": "app/about/page.js",
-  "/practice-areas/[slug]/page": "app/practice-areas/[slug]/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/practice-areas/[slug]/[subcategory]/page": "app/practice-areas/[slug]/[subcategory]/page.js",
-  "/practice-areas/page": "app/practice-areas/page.js"
-}

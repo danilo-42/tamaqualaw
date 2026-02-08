@@ -1,16 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import JsonLd from '@/components/JsonLd';
 import { getLocalBusinessSchema, getAttorneySchemas } from '@/lib/schema';
 import styles from './page.module.css';
 
 const practiceAreas = [
-    { title: 'Family Law', icon: '👨‍👩‍👧‍👦', href: '/practice-areas/family-law' },
-    { title: 'Criminal Defense', icon: '⚖️', href: '/practice-areas/criminal-defense' },
-    { title: 'Estate Planning', icon: '📜', href: '/practice-areas/estate-planning' },
-    { title: 'Civil Litigation', icon: '📋', href: '/practice-areas/civil-litigation' },
-    { title: 'Real Estate', icon: '🏠', href: '/practice-areas/real-estate' },
-    { title: 'Personal Injury', icon: '🩹', href: '/practice-areas/personal-injury' },
+    { title: 'Family Law', href: '/practice-areas/family-law', image: '/images/image1.webp' },
+    { title: 'Criminal Defense', href: '/practice-areas/criminal-defense', image: '/images/image3.webp' },
+    { title: 'Estate Planning', href: '/practice-areas/estate-planning', image: '/images/image6.webp' },
+    { title: 'Civil Litigation', href: '/practice-areas/civil-litigation', image: '/images/image2.webp' },
+    { title: 'Real Estate', href: '/practice-areas/real-estate', image: '/images/image4.webp' },
+    { title: 'Personal Injury', href: '/practice-areas/personal-injury', image: '/images/image5.webp' },
 ];
 
 
@@ -36,7 +37,7 @@ export default function HomePage() {
 
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>
-                        Trusted Advocacy. Proven Experience. A Legacy of Protection for
+                        <span className={styles.heroTitleLead}>A Legacy of Protection for</span>
                         <span className={styles.heroTitleAccent}> Schuylkill & Carbon Counties.</span>
                     </h1>
                     <p className={styles.heroSubtitle}>
@@ -58,19 +59,15 @@ export default function HomePage() {
 
                     <div className={styles.trustBar}>
                         <div className={styles.trustItem}>
-                            <span className={styles.trustIcon}>⚖️</span>
                             <span className={styles.trustText}>20+ Years Local Experience</span>
                         </div>
                         <div className={styles.trustItem}>
-                            <span className={styles.trustIcon}>🏛️</span>
                             <span className={styles.trustText}>Former District Attorney on Staff</span>
                         </div>
                         <div className={styles.trustItem}>
-                            <span className={styles.trustIcon}>👩‍👧</span>
                             <span className={styles.trustText}>Mother-Daughter Partnership</span>
                         </div>
                         <div className={styles.trustItem}>
-                            <span className={styles.trustIcon}>📍</span>
                             <span className={styles.trustText}>Schuylkill County Specialists</span>
                         </div>
                     </div>
@@ -142,8 +139,8 @@ export default function HomePage() {
                                 key={index}
                                 href={area.href}
                                 className={styles.practiceCard}
+                                style={{ '--practice-card-image': `url(${area.image})` } as CSSProperties}
                             >
-                                <span className={styles.practiceIcon}>{area.icon}</span>
                                 <h3 className={styles.practiceCardTitle}>{area.title}</h3>
                                 <span className={styles.practiceArrow}>→</span>
                             </Link>
