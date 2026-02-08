@@ -17,7 +17,7 @@ export default function TermsOfServicePage() {
                     <div className={styles.content}>
                         <h2>1. Agreement to Terms</h2>
                         <p>
-                            These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and Holman & Pitts Law, LLC ("we," "us," or "our"), concerning your access to and use of the tamaqualaw.com website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the "Site").
+                            These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (&ldquo;you&rdquo;) and Holman &amp; Pitts Law, LLC (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), concerning your access to and use of the tamaqualaw.com website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the &ldquo;Site&rdquo;).
                         </p>
 
                         <h2>2. Authorization and Use</h2>
@@ -27,7 +27,7 @@ export default function TermsOfServicePage() {
 
                         <h2>3. Intellectual Property Rights</h2>
                         <p>
-                            Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.
+                            Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the &ldquo;Content&rdquo;) and the trademarks, service marks, and logos contained therein (the &ldquo;Marks&rdquo;) are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.
                         </p>
 
                         <h2>4. Legal Advice Disclaimer</h2>
@@ -37,7 +37,7 @@ export default function TermsOfServicePage() {
 
                         <h2>5. Third-Party Websites</h2>
                         <p>
-                            The Site may contain links to other websites ("Third-Party Websites") as well as articles, photographs, text, graphics, pictures, designs, music, sound, video, information, applications, software, and other content or items belonging to or originating from third parties ("Third-Party Content"). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for accuracy, appropriateness, or completeness by us.
+                            The Site may contain links to other websites (&ldquo;Third-Party Websites&rdquo;) as well as articles, photographs, text, graphics, pictures, designs, music, sound, video, information, applications, software, and other content or items belonging to or originating from third parties (&ldquo;Third-Party Content&rdquo;). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for accuracy, appropriateness, or completeness by us.
                         </p>
 
                         <h2>6. Governing Law</h2>

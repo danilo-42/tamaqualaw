@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
+import { getLocalBusinessSchema, getAttorneySchemas } from '@/lib/schema';
 import styles from './page.module.css';
 
 const practiceAreas = [
-    { title: 'Family Law', icon: '👨‍👩‍👧‍👦', href: '/practice-areas' },
-    { title: 'Criminal Defense', icon: '⚖️', href: '/practice-areas' },
-    { title: 'Civil Litigation', icon: '📋', href: '/practice-areas' },
-    { title: 'Real Estate', icon: '🏠', href: '/practice-areas' },
-    { title: 'Personal Injury', icon: '🩹', href: '/practice-areas' },
-    { title: 'Estate Planning', icon: '📜', href: '/practice-areas' },
+    { title: 'Family Law', icon: '👨‍👩‍👧‍👦', href: '/practice-areas/family-law' },
+    { title: 'Criminal Defense', icon: '⚖️', href: '/practice-areas/criminal-defense' },
+    { title: 'Estate Planning', icon: '📜', href: '/practice-areas/estate-planning' },
+    { title: 'Civil Litigation', icon: '📋', href: '/practice-areas/civil-litigation' },
+    { title: 'Real Estate', icon: '🏠', href: '/practice-areas/real-estate' },
+    { title: 'Personal Injury', icon: '🩹', href: '/practice-areas/personal-injury' },
 ];
 
 
@@ -16,6 +18,8 @@ const practiceAreas = [
 export default function HomePage() {
     return (
         <div className={styles.page}>
+            <JsonLd data={[getLocalBusinessSchema(), ...getAttorneySchemas()]} />
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.heroBackground}>
@@ -31,18 +35,18 @@ export default function HomePage() {
                 </div>
 
                 <div className={styles.heroContent}>
-
                     <h1 className={styles.heroTitle}>
-                        Experienced Legal Advocacy
-                        <span className={styles.heroTitleAccent}> with Compassion</span>
+                        Trusted Advocacy. Proven Experience. A Legacy of Protection for
+                        <span className={styles.heroTitleAccent}> Schuylkill & Carbon Counties.</span>
                     </h1>
                     <p className={styles.heroSubtitle}>
-                        Extensive legal experience with personalized service—dedicated to
-                        protecting your rights and pursuing the best possible outcome.
+                        Led by former District Attorney Christine Holman and former Public Defender
+                        Jacqueline Pitts, we provide the stabilizing force you need during life&apos;s
+                        most difficult legal transitions. From our family to yours—compassion meets the courtroom.
                     </p>
                     <div className={styles.heroCtas}>
                         <Link href="/contact" className={styles.ctaPrimary}>
-                            Schedule a Consultation
+                            Request Your Case Evaluation
                         </Link>
                         <Link href="tel:570-668-5321" className={styles.ctaSecondary}>
                             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -51,24 +55,43 @@ export default function HomePage() {
                             570-668-5321
                         </Link>
                     </div>
+
+                    <div className={styles.trustBar}>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustIcon}>⚖️</span>
+                            <span className={styles.trustText}>20+ Years Local Experience</span>
+                        </div>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustIcon}>🏛️</span>
+                            <span className={styles.trustText}>Former District Attorney on Staff</span>
+                        </div>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustIcon}>👩‍👧</span>
+                            <span className={styles.trustText}>Mother-Daughter Partnership</span>
+                        </div>
+                        <div className={styles.trustItem}>
+                            <span className={styles.trustIcon}>📍</span>
+                            <span className={styles.trustText}>Schuylkill County Specialists</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div className={styles.scrollIndicator}>
+                <Link href="#about" className={styles.scrollIndicator}>
                     <span>Scroll to explore</span>
                     <div className={styles.scrollArrow}></div>
-                </div>
+                </Link>
             </section>
 
 
 
             {/* About Preview */}
-            <section className={styles.aboutSection}>
+            <section id="about" className={styles.aboutSection}>
                 <div className={styles.container}>
                     <div className={styles.aboutGrid}>
                         <div className={styles.aboutImage}>
                             <Image
                                 src="/images/image7.webp"
-                                alt="Christine A. Holman and Jacqueline M. Pitts"
+                                alt="Tamaqua attorneys Christine A. Holman and Jacqueline M. Pitts - Holman & Pitts Law"
                                 width={450}
                                 height={550}
                                 className={styles.aboutPhoto}
@@ -134,12 +157,61 @@ export default function HomePage() {
                 </div>
             </section>
 
+            {/* Mission Section */}
+            <section className={styles.missionSection}>
+                <div className={styles.container}>
+                    <h2 className={styles.missionTitle}>Experienced Legal Advocacy with Compassion and Results.</h2>
+                    <p className={styles.missionText}>
+                        True local authority for Schuylkill and Carbon families who need experienced
+                        legal advocacy with compassion and results. We combine the wisdom of former
+                        District Attorney Christine Holman with the fresh, client-centered approach
+                        of Public Defender Jacqueline Pitts to deliver representation that is both
+                        strategic and deeply personal.
+                    </p>
+                </div>
+            </section>
+
+            {/* Why Local Matters */}
+            <section className={styles.localSection}>
+                <div className={styles.container}>
+                    <span className={styles.sectionLabel}>Our Community</span>
+                    <h2 className={styles.localTitle}>Why Local Matters</h2>
+                    <div className={styles.localGrid}>
+                        <div className={styles.localCard}>
+                            <h3>Deep Roots in Tamaqua</h3>
+                            <p>
+                                Our firm is headquartered on Broad Street in Tamaqua, where we have
+                                served our neighbors for years. We are active members of the Tamaqua
+                                Business and Professional Women&apos;s Club and committed to strengthening
+                                the community we call home.
+                            </p>
+                        </div>
+                        <div className={styles.localCard}>
+                            <h3>Schuylkill & Carbon Court Knowledge</h3>
+                            <p>
+                                We practice in these courthouses every day. We know the local judges,
+                                the procedures at the Schuylkill County Courthouse and Carbon County
+                                Court of Common Pleas, and the practical realities that affect your case.
+                            </p>
+                        </div>
+                        <div className={styles.localCard}>
+                            <h3>Serving the Entire Region</h3>
+                            <p>
+                                From Tamaqua to Pottsville, Frackville to Lehighton, we represent
+                                clients across Schuylkill and Carbon Counties. Our local presence means
+                                shorter travel times and a team that understands your community.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* CTA Section */}
             <section className={styles.ctaSection}>
                 <div className={styles.ctaBackground}>
                     <Image
                         src="/images/image2.webp"
-                        alt="Legal consultation"
+                        alt="Legal consultation at Holman and Pitts Law Office"
                         fill
                         className={styles.ctaBgImage}
                         sizes="100vw"
@@ -148,14 +220,14 @@ export default function HomePage() {
                 </div>
                 <div className={styles.container}>
                     <div className={styles.ctaContent}>
-                        <h2 className={styles.ctaTitle}>Ready to Discuss Your Case?</h2>
+                        <h2 className={styles.ctaTitle}>Talk to an Attorney Today</h2>
                         <p className={styles.ctaText}>
-                            We're here to help. Schedule a consultation to discuss your legal
-                            needs with our experienced attorneys.
+                            We&apos;re here to help. Contact us for a consultation to discuss your
+                            legal needs with our experienced attorneys.
                         </p>
                         <div className={styles.ctaButtons}>
                             <Link href="/contact" className={styles.ctaButton}>
-                                Get Started Today
+                                Request Your Case Evaluation
                             </Link>
                             <Link href="tel:570-668-5321" className={styles.ctaPhone}>
                                 Or call: 570-668-5321
@@ -197,7 +269,7 @@ export default function HomePage() {
                         <div className={styles.locationMap}>
                             <div className={styles.mapPlaceholder}>
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3028.5!2d-75.9686!3d40.7975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c5b5e5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2s204%20E%20Broad%20St%2C%20Tamaqua%2C%20PA%2018252!5e0!3m2!1sen!2sus!4v1234567890"
+                                    src="https://maps.google.com/maps?q=204+E+Broad+St,+Tamaqua,+PA+18252&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}

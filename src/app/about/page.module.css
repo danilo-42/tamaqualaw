@@ -223,6 +223,188 @@
     height: 20px;
 }
 
+/* Authority Text */
+.profileAnchor {
+    display: block;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: var(--spacing-xs);
+    letter-spacing: 0.5px;
+}
+
+.authorityText {
+    margin-bottom: var(--spacing-md);
+}
+
+.authorityText p {
+    color: var(--color-primary);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-left: 3px solid var(--color-accent);
+    background: rgba(201, 162, 39, 0.05);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Authority Badges Section */
+.badgesSection {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-offwhite);
+    text-align: center;
+}
+
+.badgesTitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.badgesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.badgeCard {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.badgeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.badgeIcon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badgeIcon svg {
+    width: 30px;
+    height: 30px;
+    color: var(--color-white);
+}
+
+.badgeCard h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.badgeCard p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Case Outcomes Section */
+.outcomesSection {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-white);
+    text-align: center;
+}
+
+.outcomesTitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+}
+
+.outcomesDisclaimer {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-2xl);
+    line-height: 1.6;
+}
+
+.outcomesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    text-align: left;
+}
+
+.outcomeCard {
+    background: var(--color-offwhite);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-accent);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.outcomeCard:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.outcomeLabel {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.outcomeCard h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.outcomeCard p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Narrative Section */
+.narrativeSection {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-primary);
+    text-align: center;
+}
+
+.narrativeContent {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.narrativeTitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-lg);
+}
+
+.narrativeText {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
 /* Values Section */
 .valuesSection {
     padding: var(--spacing-3xl) 0;
@@ -301,6 +483,16 @@
         max-width: 400px;
         margin: 0 auto;
     }
+
+    .badgesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .outcomesGrid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 640px) {
@@ -310,8 +502,16 @@
 
     .teamPhotoSection,
     .profilesSection,
-    .valuesSection {
+    .valuesSection,
+    .badgesSection,
+    .outcomesSection {
         padding: var(--spacing-2xl) 0;
+    }
+
+    .badgesGrid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .profileCard {

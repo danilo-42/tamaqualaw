@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding-bottom: 80px;
 }
 
 .page_heroBackground__LV9pF {
@@ -126,15 +127,41 @@
     border-color: var(--color-white);
 }
 
+.page_trustBar__zcyne {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.page_trustItem__d6eQT {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.page_trustIcon__uE7dI {
+    font-size: 1.2rem;
+}
+
 .page_scrollIndicator__m4b3d {
     position: absolute;
-    bottom: var(--spacing-2xl);
+    bottom: var(--spacing-lg);
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.85rem;
     animation: page_bounce__Y_Fqi 2s infinite;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 20;
 }
 
 .page_scrollArrow__7WaKn {
@@ -395,6 +422,84 @@
 }
 
 /* ========================================
+   Mission Section
+   ======================================== */
+
+.page_missionSection__N8M4y {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-primary);
+    text-align: center;
+}
+
+.page_missionTitle__0A83t {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page_missionText__zVPfz {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   Why Local Matters Section
+   ======================================== */
+
+.page_localSection__Fl97a {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-offwhite);
+    text-align: center;
+}
+
+.page_localTitle__xBD24 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.page_localGrid__2tsrl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--spacing-xl);
+    gap: var(--spacing-xl);
+    text-align: left;
+}
+
+.page_localCard__zrFJq {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: box-shadow var(--transition-base);
+}
+
+.page_localCard__zrFJq:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.page_localCard__zrFJq h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.page_localCard__zrFJq p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* ========================================
    CTA Section
    ======================================== */
 
@@ -612,7 +717,9 @@
 }
 
 @media (max-width: 768px) {
-
+    .page_localGrid__2tsrl {
+        grid-template-columns: 1fr;
+    }
 
     .page_practiceGrid__zNFVw {
         grid-template-columns: repeat(2, 1fr);

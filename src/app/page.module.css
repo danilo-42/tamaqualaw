@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding-bottom: 80px;
 }
 
 .heroBackground {
@@ -123,15 +124,41 @@
     border-color: var(--color-white);
 }
 
+.trustBar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trustItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.trustIcon {
+    font-size: 1.2rem;
+}
+
 .scrollIndicator {
     position: absolute;
-    bottom: var(--spacing-2xl);
+    bottom: var(--spacing-lg);
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.85rem;
     animation: bounce 2s infinite;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 20;
 }
 
 .scrollArrow {
@@ -390,6 +417,83 @@
 }
 
 /* ========================================
+   Mission Section
+   ======================================== */
+
+.missionSection {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-primary);
+    text-align: center;
+}
+
+.missionTitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.missionText {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   Why Local Matters Section
+   ======================================== */
+
+.localSection {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-offwhite);
+    text-align: center;
+}
+
+.localTitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.localGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    text-align: left;
+}
+
+.localCard {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: box-shadow var(--transition-base);
+}
+
+.localCard:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.localCard h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.localCard p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* ========================================
    CTA Section
    ======================================== */
 
@@ -606,7 +710,9 @@
 }
 
 @media (max-width: 768px) {
-
+    .localGrid {
+        grid-template-columns: 1fr;
+    }
 
     .practiceGrid {
         grid-template-columns: repeat(2, 1fr);

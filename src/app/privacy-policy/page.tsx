@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
                     <div className={styles.content}>
                         <h2>1. Introduction</h2>
                         <p>
-                            Holman & Pitts Law, LLC ("we," "our," or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit the website tamaqualaw.com (our "Website") and our practices for collecting, using, maintaining, protecting, and disclosing that information.
+                            Holman &amp; Pitts Law, LLC (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy and is committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit the website tamaqualaw.com (our &ldquo;Website&rdquo;) and our practices for collecting, using, maintaining, protecting, and disclosing that information.
                         </p>
 
                         <h2>2. Information We Collect</h2>
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
                             We collect several types of information from and about users of our Website, including information:
                         </p>
                         <ul>
-                            <li>By which you may be personally identified, such as name, e-mail address, telephone number, or any other identifier by which you may be contacted online or offline ("personal information");</li>
+                            <li>By which you may be personally identified, such as name, e-mail address, telephone number, or any other identifier by which you may be contacted online or offline (&ldquo;personal information&rdquo;);</li>
                             <li>That is about you but individually does not identify you; and/or</li>
                             <li>About your internet connection, the equipment you use to access our Website, and usage details.</li>
                         </ul>

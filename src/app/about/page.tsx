@@ -1,14 +1,29 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
+import { Metadata } from 'next';
+import AttorneyCard from '@/components/AttorneyCard';
+import JsonLd from '@/components/JsonLd';
+import { getAttorneySchemas, getBreadcrumbSchema } from '@/lib/schema';
 import styles from './page.module.css';
+
+export const metadata: Metadata = {
+    title: 'About Our Attorneys',
+    description: 'Meet former District Attorney Christine Holman and Public Defender Jacqueline Pitts. Mother-daughter attorneys serving Tamaqua, Pottsville, Frackville & Schuylkill County.',
+    alternates: {
+        canonical: '/about',
+    },
+    openGraph: {
+        title: 'About Our Attorneys | Holman & Pitts Law',
+        description: 'Meet former District Attorney Christine Holman and Public Defender Jacqueline Pitts.',
+    },
+};
 
 const attorneys = [
     {
         id: 'christine-holman',
         name: 'Christine A. Holman, Esq.',
         role: 'Founding Partner',
+        anchor: 'Former District Attorney',
+        authorityText: 'With over 20 years of experience, Attorney Holman offers a unique inside-out perspective on the legal system, having served as the county\'s lead prosecutor.',
         shortBio: `Christine A. Holman, Esquire has been practicing law in Schuylkill County for over two decades. She originally opened her solo law office in Frackville in 2000, following years of experience both in the courtroom and behind the scenes.`,
         fullBio: `Christine A. Holman, Esquire has been practicing law in Schuylkill County for over two decades. She originally opened her solo law office in Frackville in 2000, following years of experience both in the courtroom and behind the scenes. A graduate of the Thomas M. Cooley Law School, Attorney Holman began her legal career as a judicial law clerk, first for the Honorable Cyrus Palmer Dolbin, and later for the Honorable John E. Domalakes, before joining the law firm of Rubright, Domalakes, Troy & Miller.
 
@@ -22,6 +37,8 @@ In 2022, Attorney Holman welcomed her daughter, Jacqueline M. Pitts, Esq., as an
         id: 'jacqueline-pitts',
         name: 'Jacqueline M. Pitts, Esq.',
         role: 'Associate Attorney',
+        anchor: 'Public Defender Perspective',
+        authorityText: 'Attorney Pitts brings a vigorous, client-centered approach, ensuring every individual receives a sophisticated and aggressive defense.',
         shortBio: `Jacqueline M. Pitts, Esquire graduated from Widener University Commonwealth Law School in 2022 and became a licensed attorney that same year. She officially joined her mother's practice as an associate attorney.`,
         fullBio: `Jacqueline M. Pitts, Esquire graduated from Widener University Commonwealth Law School in 2022 and became a licensed attorney that same year. She officially joined her mother's practice as an associate attorney, and together they launched Holman and Pitts Law, LLC, continuing a family tradition of legal service in Schuylkill County.
 
@@ -36,18 +53,16 @@ Both Christine and Jacqueline are proud active members of the Tamaqua Business a
 ];
 
 export default function AboutPage() {
-    const [expandedBios, setExpandedBios] = useState<{ [key: string]: boolean }>({});
-
-    const toggleBio = (id: string) => {
-        setExpandedBios((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
-    };
+    const breadcrumbSchema = getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'About', url: '/about' },
+    ]);
 
     return (
         <div className={styles.page}>
-            {/* Hero Section with Team Photo */}
+            <JsonLd data={[...getAttorneySchemas(), breadcrumbSchema]} />
+
+            {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>About Us</h1>
@@ -64,7 +79,7 @@ export default function AboutPage() {
                         <div className={styles.photoWrapper}>
                             <Image
                                 src="/images/image7.webp"
-                                alt="Christine A. Holman and Jacqueline M. Pitts - Holman & Pitts Law"
+                                alt="Tamaqua attorneys Christine A. Holman and Jacqueline M. Pitts - Holman & Pitts Law, Schuylkill County"
                                 width={400}
                                 height={500}
                                 className={styles.teamPhoto}
@@ -80,58 +95,99 @@ export default function AboutPage() {
             </section>
 
             {/* Attorney Profiles */}
-            <section className={styles.profilesSection}>
+            <section id="team" className={styles.profilesSection}>
                 <div className={styles.container}>
                     <div className={styles.profilesGrid}>
                         {attorneys.map((attorney, index) => (
-                            <article
-                                key={attorney.id}
-                                className={`${styles.profileCard} ${index === 0 ? styles.cardLeft : styles.cardRight}`}
-                            >
-                                <div className={styles.profileHeader}>
-                                    <div className={styles.profileIcon}>
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                        </svg>
-                                    </div>
-                                    <div className={styles.profileTitles}>
-                                        <h2 className={styles.profileName}>{attorney.name}</h2>
-                                        <span className={styles.profileRole}>{attorney.role}</span>
-                                    </div>
-                                </div>
-
-                                <div className={styles.profileDivider}></div>
-
-                                <div className={styles.profileBio}>
-                                    <p>
-                                        {expandedBios[attorney.id]
-                                            ? attorney.fullBio
-                                            : attorney.shortBio}
-                                    </p>
-                                </div>
-
-                                <button
-                                    className={styles.toggleButton}
-                                    onClick={() => toggleBio(attorney.id)}
-                                >
-                                    {expandedBios[attorney.id] ? (
-                                        <>
-                                            <span>Show Less</span>
-                                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
-                                            </svg>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <span>Read Full Bio</span>
-                                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                                            </svg>
-                                        </>
-                                    )}
-                                </button>
-                            </article>
+                            <AttorneyCard key={attorney.id} attorney={attorney} index={index} />
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Authority Badges */}
+            <section className={styles.badgesSection}>
+                <div className={styles.container}>
+                    <h2 className={styles.badgesTitle}>Recognitions &amp; Credentials</h2>
+                    <div className={styles.badgesGrid}>
+                        <div className={styles.badgeCard}>
+                            <div className={styles.badgeIcon}>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                                </svg>
+                            </div>
+                            <h3>First Elected Female DA</h3>
+                            <p>Schuylkill County, 2014&ndash;2017</p>
+                        </div>
+                        <div className={styles.badgeCard}>
+                            <div className={styles.badgeIcon}>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+                                </svg>
+                            </div>
+                            <h3>20+ Years of Practice</h3>
+                            <p>Schuylkill &amp; Carbon Counties</p>
+                        </div>
+                        <div className={styles.badgeCard}>
+                            <div className={styles.badgeIcon}>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                </svg>
+                            </div>
+                            <h3>PA Bar Admitted</h3>
+                            <p>Active members in good standing</p>
+                        </div>
+                        <div className={styles.badgeCard}>
+                            <div className={styles.badgeIcon}>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                                </svg>
+                            </div>
+                            <h3>Community Leaders</h3>
+                            <p>Tamaqua BPW &amp; Frackville Lions Club</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Case Outcomes */}
+            <section className={styles.outcomesSection}>
+                <div className={styles.container}>
+                    <h2 className={styles.outcomesTitle}>Representative Results</h2>
+                    <p className={styles.outcomesDisclaimer}>
+                        Every case is unique. Past results do not guarantee a similar outcome.
+                        These examples illustrate the types of matters we handle.
+                    </p>
+                    <div className={styles.outcomesGrid}>
+                        <div className={styles.outcomeCard}>
+                            <span className={styles.outcomeLabel}>Family Law</span>
+                            <h3>Custody Modified</h3>
+                            <p>Secured primary custody for a parent in a contested modification proceeding in Schuylkill County.</p>
+                        </div>
+                        <div className={styles.outcomeCard}>
+                            <span className={styles.outcomeLabel}>Criminal Defense</span>
+                            <h3>Charges Reduced</h3>
+                            <p>Negotiated felony charges down to a misdemeanor with no jail time for a first-time offender.</p>
+                        </div>
+                        <div className={styles.outcomeCard}>
+                            <span className={styles.outcomeLabel}>Estate Planning</span>
+                            <h3>Estate Administered</h3>
+                            <p>Successfully guided a family through complex probate proceedings involving multi-county assets.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Mother-Daughter Narrative / Our Story */}
+            <section id="story" className={styles.narrativeSection}>
+                <div className={styles.container}>
+                    <div className={styles.narrativeContent}>
+                        <h2 className={styles.narrativeTitle}>A Family Firm, Serving Families</h2>
+                        <p className={styles.narrativeText}>
+                            As a mother-daughter firm, we understand that legal issues are not just
+                            cases&mdash;they are family matters. We combine the wisdom of experience
+                            with modern legal strategy to serve our neighbors in Tamaqua and beyond.
+                        </p>
                     </div>
                 </div>
             </section>

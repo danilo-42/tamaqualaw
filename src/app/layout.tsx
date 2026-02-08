@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SafeExit from '@/components/SafeExit';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -17,14 +18,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: 'Holman & Pitts Law, LLC | Experienced Legal Advocacy',
-    description: 'Extensive legal experience with personalized service—dedicated to protecting your rights across family law, criminal defense, civil litigation, personal injury, real estate, and estate planning in Schuylkill and Carbon Counties.',
-    keywords: 'law firm, attorney, lawyer, Schuylkill County, Tamaqua, family law, criminal defense, civil litigation, personal injury, real estate, estate planning',
+    metadataBase: new URL('https://holmanpittslaw.com'),
+    title: {
+        default: 'Holman & Pitts Law | Tamaqua Divorce & Criminal Defense Attorneys',
+        template: '%s | Holman & Pitts Law',
+    },
+    description: 'Divorce, criminal defense & estate planning attorneys serving Tamaqua, Pottsville, Frackville & Lehighton. Former DA Christine Holman & Public Defender Jacqueline Pitts. Call 570-668-5321.',
+    keywords: 'divorce lawyer Tamaqua, criminal defense attorney Schuylkill County, estate planning lawyer Tamaqua, family law attorney Pottsville, DUI lawyer Schuylkill County, Holman Pitts Law',
+    alternates: {
+        canonical: '/',
+    },
     openGraph: {
-        title: 'Holman & Pitts Law, LLC',
-        description: 'Experienced Legal Advocacy with Compassion and Results',
+        title: 'Holman & Pitts Law | Tamaqua Divorce & Criminal Defense Attorneys',
+        description: 'Experienced Legal Advocacy with Compassion and Results. Former DA & Public Defender serving Schuylkill & Carbon Counties.',
         type: 'website',
         locale: 'en_US',
+        siteName: 'Holman & Pitts Law',
+        url: 'https://holmanpittslaw.com',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Holman & Pitts Law | Tamaqua Divorce & Criminal Defense Attorneys',
+        description: 'Experienced Legal Advocacy with Compassion and Results. Former DA & Public Defender serving Schuylkill & Carbon Counties.',
     },
 };
 
@@ -38,6 +53,7 @@ export default function RootLayout({
             <body>
                 <Header />
                 <main>{children}</main>
+                <SafeExit />
                 <Footer />
             </body>
         </html>

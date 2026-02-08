@@ -1,8 +1,19 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import ContactForm from '@/components/ContactForm';
 import styles from './page.module.css';
+
+export const metadata: Metadata = {
+    title: 'Contact Us',
+    description: 'Contact Holman & Pitts Law in Tamaqua, PA. Call 570-668-5321 or email office@holmanpitts.com. Divorce, criminal defense & estate planning attorneys serving Schuylkill County.',
+    alternates: {
+        canonical: '/contact',
+    },
+    openGraph: {
+        title: 'Contact Holman & Pitts Law | Tamaqua PA',
+        description: 'Call 570-668-5321 or email office@holmanpitts.com for a case evaluation.',
+    },
+};
 
 const businessHours = [
     { day: 'Mon', hours: '09:00 am – 05:00 pm' },
@@ -15,51 +26,6 @@ const businessHours = [
 ];
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitMessage, setSubmitMessage] = useState('');
-
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitMessage('');
-
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (response.ok) {
-                setSubmitMessage('Thank you for your message. We will get back to you soon.');
-                setFormData({ name: '', email: '', message: '' });
-            } else {
-                setSubmitMessage('Something went wrong. Please try again later.');
-            }
-        } catch (error) {
-            setSubmitMessage('An error occurred. Please try again later.');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
     return (
         <div className={styles.page}>
             <section className={styles.hero}>
@@ -73,69 +39,7 @@ export default function ContactPage() {
                     <div className={styles.contactGrid}>
                         {/* Contact Form */}
                         <div className={styles.formColumn}>
-                            <h2 className={styles.formTitle}>Drop us a line!</h2>
-
-                            <form onSubmit={handleSubmit} className={styles.form}>
-                                <div className={styles.formGroup}>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                        placeholder="Name"
-                                        className={styles.input}
-                                        required
-                                    />
-                                </div>
-
-                                <div className={styles.formGroup}>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        placeholder="Email*"
-                                        className={styles.input}
-                                        required
-                                    />
-                                </div>
-
-                                <div className={styles.formGroup}>
-                                    <textarea
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        placeholder="Message"
-                                        className={styles.textarea}
-                                        rows={5}
-                                        required
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className={styles.submitButton}
-                                    disabled={isSubmitting}
-                                >
-                                    {isSubmitting ? 'Sending...' : 'Send'}
-                                </button>
-
-                                {submitMessage && (
-                                    <p className={styles.successMessage}>{submitMessage}</p>
-                                )}
-                            </form>
-
-                            <p className={styles.disclaimer}>
-                                This site is protected by reCAPTCHA and the Google{' '}
-                                <Link href="https://policies.google.com/privacy" className={styles.link}>
-                                    Privacy Policy
-                                </Link>{' '}
-                                and{' '}
-                                <Link href="https://policies.google.com/terms" className={styles.link}>
-                                    Terms of Service
-                                </Link>{' '}
-                                apply.
-                            </p>
+                            <ContactForm />
                         </div>
 
                         {/* Business Info */}
@@ -158,6 +62,9 @@ export default function ContactPage() {
                                 </p>
                                 <p className={styles.phone}>
                                     <Link href="tel:570-668-5321">570-668-5321</Link>
+                                </p>
+                                <p className={styles.email}>
+                                    <Link href="mailto:office@holmanpitts.com">office@holmanpitts.com</Link>
                                 </p>
                             </div>
 

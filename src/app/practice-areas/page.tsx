@@ -1,12 +1,22 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { Metadata } from 'next';
 import styles from './page.module.css';
+
+export const metadata: Metadata = {
+    title: 'Practice Areas',
+    description: 'Family law, criminal defense, estate planning, civil litigation, real estate, and personal injury attorneys serving Tamaqua, Pottsville, Frackville & Lehighton in Schuylkill and Carbon Counties.',
+    alternates: {
+        canonical: '/practice-areas',
+    },
+};
 
 const practiceAreas = [
     {
         id: 'family-law',
         title: 'Family Law',
         image: '/images/image1.webp',
-        description: 'Divorce, custody, support, and other family matters handled with care and expertise.',
+        description: 'Navigating Divorce and Custody with Compassion. We prioritize the best interests of your children and the protection of your assets.',
     },
     {
         id: 'civil-litigation',
@@ -18,7 +28,7 @@ const practiceAreas = [
         id: 'criminal-defense',
         title: 'Criminal Defense',
         image: '/images/image3.webp',
-        description: 'Protecting your rights with experienced criminal defense representation.',
+        description: 'Your Freedom is Our Priority. Utilizing decades of prosecutorial and defense experience to protect your rights in Schuylkill County.',
     },
     {
         id: 'real-estate',
@@ -36,7 +46,7 @@ const practiceAreas = [
         id: 'estate-planning',
         title: 'Estate Administration & Planning',
         image: '/images/image6.webp',
-        description: 'Wills, trusts, and estate administration to protect your legacy.',
+        description: 'Securing Your Legacy. Personalized Wills, Trusts, and Power of Attorney services for Tamaqua families.',
     },
 ];
 
@@ -60,7 +70,7 @@ export default function PracticeAreasPage() {
                     <h2 className={styles.sectionTitle}>Our practice includes:</h2>
                     <div className={styles.areasGrid}>
                         {practiceAreas.map((area) => (
-                            <article key={area.id} className={styles.areaCard}>
+                            <Link key={area.id} href={`/practice-areas/${area.id}`} className={styles.areaCard}>
                                 <div className={styles.imageWrapper}>
                                     <Image
                                         src={area.image}
@@ -75,7 +85,7 @@ export default function PracticeAreasPage() {
                                     <h3 className={styles.areaTitle}>{area.title}</h3>
                                     <p className={styles.areaDescription}>{area.description}</p>
                                 </div>
-                            </article>
+                            </Link>
                         ))}
                     </div>
                 </div>

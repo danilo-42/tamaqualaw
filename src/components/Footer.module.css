@@ -12,6 +12,40 @@
     text-align: center;
 }
 
+.footerInfo {
+    margin-bottom: var(--spacing-md);
+}
+
+.firmName {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    margin: 0 0 var(--spacing-xs);
+}
+
+.nap {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin: 0 0 var(--spacing-xs);
+}
+
+.nap a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.nap a:hover {
+    color: var(--color-accent);
+}
+
+.serviceArea {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin: 0;
+    font-style: italic;
+}
+
 .copyright {
     font-size: 0.9rem;
     color: var(--color-text-light);
