@@ -1,0 +1,157 @@
+Holman & Pitts Law Website Improvement Plan (SEO + Local Dominance)
+Generated from code audit of current Next.js site and your strategic notes.
+
+Phase 1 - Fix Core Messaging, Navigation, and Trust Signals
+1. In `src/components/Header.tsx`, replace the current 4-link nav with a structured menu:
+   - Family Law -> Divorce, Child Custody, Adoption, Spousal Support
+   - Criminal Defense -> DUI, Drug Crimes, Juvenile Defense
+   - Estate Planning -> Wills & Trusts, Power of Attorney, Probate
+   - About Us -> Our Story, Meet the Team
+2. Search and fix any live or code typo of "Pracitce Areas" to "Practice Areas" using `rg -n "Pracitce" src public`.
+3. In `src/components/Header.tsx`, remove redundant branding text blocks; keep one firm-name block only.
+4. In `src/components/Header.tsx`, change logo `<h1>` to a non-heading element (or `<p>`). Keep one page-level `<h1>` in hero content for SEO clarity.
+5. In `src/app/page.tsx`, replace hero headline with exact text:
+   "Trusted Advocacy. Proven Experience. A Legacy of Protection for Schuylkill & Carbon Counties."
+6. In `src/app/page.tsx`, replace hero sub-hook with exact text:
+   "Led by former District Attorney Christine Holman and former Public Defender Jacqueline Pitts, we provide the stabilizing force you need during life's most difficult legal transitions. From our family to yours-compassion meets the courtroom."
+7. In `src/app/page.tsx`, change primary CTA from "Schedule a Consultation" to "Request Your Case Evaluation".
+8. In `src/app/page.tsx`, add a trust-signal bar directly under hero with four items:
+   - 20+ Years Local Experience
+   - Former District Attorney on Staff
+   - Mother-Daughter Partnership
+   - Schuylkill County Specialists
+
+Phase 2 - Rebuild Information Architecture for "Near Me" SEO
+11. Create a Hub-and-Spoke page architecture under `src/app`:
+   - Hub: `/practice-areas`
+   - Spokes: deep sub-pages per practice topic and per location.
+12. Replace generic homepage practice cards in `src/app/page.tsx` with links to real spoke pages (not all linking to `/practice-areas`).
+13. In `src/app/practice-areas/page.tsx`, convert to true hub page with summary cards and internal links to sub-pages.
+14. Create new directory `src/app/practice-areas/family-law/` with a dedicated page.
+15. Create new directory `src/app/practice-areas/criminal-defense/` with a dedicated page.
+16. Create new directory `src/app/practice-areas/estate-planning/` with a dedicated page.
+17. Under Family Law, create spokes:
+   - `/practice-areas/family-law/divorce`
+   - `/practice-areas/family-law/child-custody`
+   - `/practice-areas/family-law/adoption`
+   - `/practice-areas/family-law/spousal-support`
+   - `/practice-areas/family-law/grandparents-rights-pa`
+18. Under Criminal Defense, create spokes:
+   - `/practice-areas/criminal-defense/dui`
+   - `/practice-areas/criminal-defense/first-offense-dui-schuylkill`
+   - `/practice-areas/criminal-defense/drug-crimes`
+   - `/practice-areas/criminal-defense/juvenile-defense`
+19. Under Estate Planning, create spokes:
+   - `/practice-areas/estate-planning/wills-trusts`
+   - `/practice-areas/estate-planning/power-of-attorney`
+   - `/practice-areas/estate-planning/probate`
+20. Add location landing pages in new `src/app/locations/` tree:
+   - `/locations/tamaqua`
+   - `/locations/pottsville`
+   - `/locations/frackville`
+   - `/locations/lehighton`
+21. For each location page, add practice-intent variants:
+   - `/locations/pottsville/criminal-defense`
+   - `/locations/lehighton/family-law`
+   - `/locations/frackville/estate-planning`
+   - `/locations/tamaqua/divorce-lawyer`
+22. On every location page, include unique local copy (court references, travel radius, community context); do not duplicate the same paragraph.
+23. Add strong internal links between each location page and the relevant practice spokes.
+24. Add a "Nearby Areas We Serve" block on each location page linking to the other town pages.
+
+Phase 3 - Replace Thin/Gaps in Content With Authority + Compassion Story
+25. In `src/app/about/page.tsx`, update Christine Holman's title to include bold anchor: "Former District Attorney".
+26. In `src/app/about/page.tsx`, insert this authority text:
+   "With over 20 years of experience, Attorney Holman offers a unique inside-out perspective on the legal system, having served as the county's lead prosecutor."
+27. In `src/app/about/page.tsx`, update Jacqueline Pitts section with anchor: "Public Defender Perspective".
+28. In `src/app/about/page.tsx`, insert this text:
+   "Attorney Pitts brings a vigorous, client-centered approach, ensuring every individual receives a sophisticated and aggressive defense."
+29. In `src/app/about/page.tsx`, add the mother-daughter narrative block:
+   "As a mother-daughter firm, we understand that legal issues are not just cases-they are family matters. We combine the wisdom of experience with modern legal strategy to serve our neighbors in Tamaqua and beyond."
+30. Add an "Authority Badges" section under attorney bios for recognitions (only verified badges/awards).
+31. Add a "Case Outcomes" section with measurable results (settlements/verdicts) and required legal disclaimer language.
+32. Replace any generic stock-style legal imagery with authentic local photos (courthouse/community context).
+33. Ensure all attorney photos have descriptive alt text including names + local market terms where natural.
+
+Phase 4 - Homepage and Practice Copy Updates (Exact Wording Targets)
+34. In `src/app/page.tsx`, replace generic hero subtitle language "Extensive legal experience with personalized service" with the approved mission wording in Step 6.
+35. In `src/app/practice-areas/page.tsx`, replace generic family law blurb with:
+   "Navigating Divorce and Custody with Compassion. We prioritize the best interests of your children and the protection of your assets."
+36. In `src/app/practice-areas/page.tsx`, replace criminal defense blurb with:
+   "Your Freedom is Our Priority. Utilizing decades of prosecutorial and defense experience to protect your rights in Schuylkill County."
+37. In `src/app/practice-areas/page.tsx`, replace estate planning blurb with:
+   "Securing Your Legacy. Personalized Wills, Trusts, and Power of Attorney services for Tamaqua families."
+38. Remove or de-prioritize unrelated broad categories from hero-level messaging if they dilute core positioning (Family, Criminal, Estate should lead).
+39. Add a homepage mission section with USP headline:
+   "Experienced Legal Advocacy with Compassion and Results."
+40. Add a short "Why Local Matters" section emphasizing deep roots in Tamaqua and practical knowledge of Schuylkill/Carbon court systems.
+
+Phase 5 - Technical SEO and Local Schema
+41. In `src/app/layout.tsx`, update metadata title to exact target:
+   "Holman & Pitts Law | Tamaqua Divorce & Criminal Defense Attorneys"
+42. In `src/app/layout.tsx`, rewrite description to include service towns and intent terms (divorce lawyer, criminal defense attorney, estate planning lawyer).
+43. Add page-specific metadata exports for Home, About, Contact, Practice Hubs, Practice Spokes, and Location pages.
+44. Add canonical URLs for every page (especially location/service combinations).
+45. Create `src/app/sitemap.ts` with all core, spoke, and location URLs.
+46. Create `src/app/robots.ts` with sitemap reference and crawl directives.
+47. Add JSON-LD to homepage for `LegalService` and `LocalBusiness` including NAP, geo, hours, and service area.
+48. Add `Attorney` schema entries for Christine Holman and Jacqueline Pitts.
+49. Add `BreadcrumbList` schema to practice and location subpages.
+50. Add FAQ sections on high-intent pages and include FAQ schema markup.
+51. Ensure OG/Twitter metadata is present on all key landing pages with unique titles and descriptions.
+52. Add `alternates` canonical handling in Next metadata API to prevent duplicate indexation.
+
+Phase 6 - Conversion, Contact Integrity, and UX Trust
+53. Replace or supplement current placeholder API behavior in `src/app/api/contact/route.ts` with real email delivery or CRM webhook.
+54. Add spam prevention (honeypot + server validation + rate limit) to contact flow.
+55. Add explicit intake CTA language "Talk to an Attorney Today" on homepage and contact page.
+56. Update all contact email references and mailto links to `office@holmanpitts.com`.
+57. Verify no `@gmail.com` references remain across code and content with `rg -n "gmail|@gmail" src public`.
+58. In `src/components/Footer.tsx`, add service area line:
+   "Serving Tamaqua, Pottsville, Frackville, Lehighton, and all of Schuylkill & Carbon Counties."
+59. Add click-to-call and tap-to-text CTA options on mobile.
+60. Ensure key CTAs are above-the-fold on mobile for hero, practice hub, and location pages.
+
+Phase 7 - Performance and Competitive Technical Edge
+61. Convert all non-critical images to lazy loading and right-sized responsive `sizes` values.
+62. Compress and re-export large assets in `public/images` to modern formats and smaller dimensions where possible.
+63. Remove unused component code (for example, `HeroSlider` if not used) to reduce bundle noise.
+64. Run Lighthouse and fix Core Web Vitals blockers until mobile performance is consistently green.
+65. Add preconnect hints for critical third-party domains only when needed.
+66. Replace fake/placeholder map embed data with a verified Google Maps embed for the real office location.
+
+Phase 8 - Local Authority Flywheel (Off-Site But Required)
+67. Consolidate Tamaqua and Frackville Google Business Profile listings to eliminate split ranking signals.
+68. Publish weekly GBP posts with legal updates and attorney insights (for example, custody law updates in PA).
+69. Implement automated review requests after consultations/case milestones.
+70. Build a review response SOP so every review is acknowledged quickly with compliant language.
+71. Keep NAP data perfectly consistent across website, GBP, legal directories, and social profiles.
+
+Phase 9 - Editorial Calendar for Long-Tail Dominance
+72. Publish 2 high-intent articles per month tied to practice + location combinations.
+73. First content batch should include:
+   - "First-Offense DUI in Schuylkill County: What Happens Next"
+   - "Grandparents' Rights in Pennsylvania: What Families Need to Know"
+   - "How Custody Is Decided in Schuylkill County"
+   - "Do I Need a Will or a Trust in Pennsylvania?"
+74. Add internal links from each article to related service page + location page + contact CTA.
+75. Add clear author bylines tied to attorney profiles for E-E-A-T trust.
+
+Phase 10 - Tracking, QA, and Launch Discipline
+76. Connect Google Search Console, GA4, and call/form conversion tracking before launch.
+77. Create rank tracking for target keywords in Tamaqua, Pottsville, Frackville, and Lehighton.
+78. QA checklist before deployment:
+   - single H1 per page
+   - no broken links
+   - valid schema
+   - correct canonical
+   - mobile CTA visibility
+   - correct NAP/footer/service areas
+79. After launch, request indexing for all new hub/spoke/location pages in Search Console.
+80. Run a 30/60/90-day performance review: rankings, calls, form submissions, GBP actions, and page-speed trend; then adjust content priority.
+
+Definition of Winning Positioning (keep this consistent sitewide)
+81. Brand pillar 1 (Authority): highlight former DA and public defender experience with measurable outcomes.
+82. Brand pillar 2 (Compassion): emphasize mother-daughter, client-first, stabilizing-force narrative.
+83. Market position statement:
+   "True local authority for Schuylkill and Carbon families who need experienced legal advocacy with compassion and results."
